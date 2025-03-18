@@ -1,0 +1,105 @@
+<div class="body">
+  <div class="header">
+    <h1>RCDSB Email Signature Generator</h1>
+  </div>
+
+  <div class="main">
+    <form id="sigForm" [formGroup]="form">
+      <div style="display: block;">
+        <label class="inputLabel" for="name">Name: </label>
+        <input formControlName="name" type="text" id="name">
+      </div>
+
+      <div style="display: block;">
+        <label class="inputLabel" for="position">Position: </label>
+        <input formControlName="position" type="text" id="position">
+      </div>
+
+      <div style="display: block;">
+        <label class="inputLabel" for="location">Location/School: </label>
+        <select formControlName="company" id="location">
+          <option>Renfrew County District School Board</option>
+          <option>Admaston Public School</option>
+          <option>A.J. Charbonneau Public School</option>
+          <option>Arnprior District High School</option>
+          <option>Beachburg Public School</option>
+          <option>Central Public School</option>
+          <option>Champlain Discovery Public School</option>
+          <option>Cobden District Public School</option>
+          <option>Eganville and District Public School</option>
+          <option>Fellowes High School</option>
+          <option>Herman Street Public School</option>
+          <option>Highview Public School</option>
+          <option>Killaloe Public School</option>
+          <option>Mackenzie Community School</option>
+          <option>Madawaska Valley District School</option>
+          <option>McNab Public School</option>
+          <option>Opeongo High School</option>
+          <option>Palmer Rapids Public School</option>
+          <option>Pine View Public School</option>
+          <option>Queen Elizabeth Public School</option>
+          <option>Renfrew Collegiate Institute</option>
+          <option>Rockwood Public School</option>
+          <option>Valour JK-12 School</option>
+          <option>Walter Zadow Public School</option>
+          <option>Whitney Public School</option>
+          <option>Continuing Ed</option>
+        </select>
+      </div>
+
+      <div style="display: block;">
+        <div style="display: flex;">
+          <div>
+            <label class="inputLabel" for="phone">Phone Number: </label>
+            <input formControlName="phone" type="text" style="margin-top: 2px" id="phone">
+          </div>
+          <div>
+            <div class="inputLabel">
+              <label for="extension">Extension? </label>
+              <input type="checkbox" formControlName="extensionBool" (change)="updateExtensionBox()" id="extension">
+            </div>
+            <ng-container *ngIf="ext">
+              <input formControlName="extension" type="text" aria-label="Extension Textbox"></ng-container>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: block;">
+        <label for="logo">Add Logo?</label>
+        <input type="checkbox" formControlName="logo" id="logo">
+
+      </div>
+
+      <div style="display: block;">
+        <input type="submit" (click)="generateSignature()" style="margin-top:5px">
+      </div>
+    </form>
+
+
+    <div id="signatureBlock" *ngIf="signature">
+      <p id="signatureText" style="font-size: 10pt; margin-bottom: 0px;">
+        <strong><span style="color: #66a343; font-size: 14pt;">{{uiName}}</span><br>
+          <span style="color: #009bd1;">{{uiPosition}}</span></strong><br>
+        <span>{{uiCompany}}</span><br>
+        <span>{{uiPhone}}</span>
+      </p>
+
+      <ng-container *ngIf="logo">
+        <ng-container *ngIf="uiCompany != 'Renfrew County District School Board'">
+          <img style="width: 200px; height: auto;" [src]="schoolLogo" alt="schoolLogoAlt">
+          <br>
+        </ng-container>
+
+        <img style="width: 200px; height: auto;" src="https://www.rcdsb.on.ca/en/resources/logo.jpg" alt="RCDSB logo">
+      </ng-container>
+    </div>
+    
+    <ng-container *ngIf="signature">
+      <button (click)="CopyToClipboard()">Copy Signature Block</button>
+    </ng-container>
+  </div>
+
+
+
+  <router-outlet />
+</div>
