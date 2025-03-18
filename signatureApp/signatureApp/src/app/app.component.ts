@@ -9,7 +9,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'signatureApp';
+  title = 'Signature Generator';
 
   schoolLogo: string;
   schoolLogoAlt: string;
@@ -135,7 +135,7 @@ export class AppComponent {
     this.schoolLogoAlt = this.uiCompany + " logo";
   }
 
-  CopyToClipboard() {
+  copyToClipboard() {
     const copyDiv = document.getElementById("signatureBlock");
 
     if (copyDiv) {
