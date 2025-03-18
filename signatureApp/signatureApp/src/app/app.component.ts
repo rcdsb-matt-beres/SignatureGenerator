@@ -22,10 +22,13 @@ export class AppComponent {
     phone: new FormControl(),
     extension: new FormControl(),
     extensionBool: new FormControl(),
-    logo: new FormControl()
+    rcdsbLogo: new FormControl(),
+    schoolLogo: new FormControl()
   })
+
   signature: boolean = false;
-  logo: boolean = false;
+  rcdsbLogoBool: boolean = false;
+  schoolLogoBool: boolean = false;
   ext: boolean = false
   uiName: string = "";
   uiPosition: string = "";
@@ -39,8 +42,9 @@ export class AppComponent {
     this.uiPosition = this.form.get("position")?.value;
     this.uiCompany = this.form.get("company")?.value;
     this.uiPhone = this.form.get("phone")?.value + (this.form.get("extensionBool")?.value ? " ext." + this.form.get("extension")?.value : "");
-    this.logo = this.form.get("logo")?.value;
-    if (this.logo) {
+    this.rcdsbLogoBool = this.form.get("rcdsbLogo")?.value;
+    this.schoolLogoBool = this.form.get("schoolLogo")?.value;
+    if (this.schoolLogoBool) {
       this.logoURL()
     }
   }
@@ -140,16 +144,6 @@ export class AppComponent {
         'text/plain': new Blob([copyDiv.innerText], { type: 'text/plain' }),
         'text/html': new Blob([copyDiv.innerHTML], { type: 'text/html' })
       })])
-        .then(() => {
-          let tooltip = document.getElementById("myTooltip");
-          tooltip.innerHTML = "Copied";
-          setInterval(() => {
-            tooltip.innerHTML = "Copy Template"
-          }, 1000);
-        })
-        .catch(err => {
-          console.error('Could not copy text: ', err);
-        });
     } else {
       console.error('Element to copy from could not be found');
     }

@@ -64,10 +64,17 @@
         </div>
       </div>
 
-      <div style="display: block;">
-        <label for="logo">Add Logo?</label>
-        <input type="checkbox" formControlName="logo" id="logo">
-
+      <div style="display: block; margin-top: 5px;" *ngIf="this.form.get('company').value">
+        <div style="display: flex;">
+          <div>
+            <label for="rcdsbLogo">Add RCDSB Logo?</label>
+            <input type="checkbox" formControlName="rcdsbLogo" id="rcdsbLogo">
+          </div>
+          <div style="margin-left: 10px" *ngIf="this.form.get('company').value != 'Renfrew County District School Board'">
+            <label for="schoolLogo">Add School Logo?</label>
+            <input type="checkbox" formControlName="schoolLogo" id="schoolLogo">
+          </div>
+        </div>
       </div>
 
       <div style="display: block;">
@@ -84,18 +91,19 @@
         <span>{{uiPhone}}</span>
       </p>
 
-      <ng-container *ngIf="logo">
-        <ng-container *ngIf="uiCompany != 'Renfrew County District School Board'">
-          <img style="width: 200px; height: auto;" [src]="schoolLogo" alt="schoolLogoAlt">
+      
+        <ng-container *ngIf="uiCompany != 'Renfrew County District School Board' && schoolLogoBool">
+          <img style="width: 200px; height: auto; margin-left: 5px;" [src]="schoolLogo" alt="schoolLogoAlt">
           <br>
         </ng-container>
 
-        <img style="width: 200px; height: auto;" src="https://www.rcdsb.on.ca/en/resources/logo.jpg" alt="RCDSB logo">
+        <ng-container *ngIf="rcdsbLogoBool">
+        <img style="width: 200px; height: auto; margin-left: 5px;" src="https://www.rcdsb.on.ca/en/resources/logo.jpg" alt="RCDSB logo">
       </ng-container>
     </div>
-    
+
     <ng-container *ngIf="signature">
-      <button (click)="CopyToClipboard()">Copy Signature Block</button>
+      <button (click)="CopyToClipboard()" style="margin-left: 5px;">Copy Signature Block</button>
     </ng-container>
   </div>
 
