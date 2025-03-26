@@ -5,21 +5,19 @@
 
 }
 
-.header {
-    background-color: rgb(172,225,175,.5);
-    width: 100%;
-    display: flex;
-}
-
-.main{
-    margin-top: 15px;
-    margin-left: 15px;
-}
-
 .inputLabel {
     display: block;
 }
 
 input[type = text], input[type = checkbox], input[type = submit], select  {
 margin-left: 5px;
+}
+
+.profileHeader{
+    background-color: green;
+    display: flex;
+}
+
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

@@ -3,117 +3,125 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=settings" />
 </head>
 <div class="body">
-  <div class="header">
-    <img src="https://www.rcdsb.on.ca/en/resources/transparent_logo.png" style="width: 75px; margin-left: 15px;" alt="RCDSB logo">
-    <h1>RCDSB Email Signature Generator</h1>
+  <div class="profileHeader">
+    <img style="border-radius: 50%; border: solid 1px; width: 10%; margin-top: 1%; margin-bottom: -3%; margin-left: 3%;"
+      src="/assets/logo.png">
+    <h2 style="margin-top: 3%; margin-bottom: -3%; margin-left: 1%; font-size: 5cqw;">RCDSB</h2>
+  </div>
+  <div>
+    <p style="margin-left: 14.5%; margin-top: 0%; margin-bottom: 0%;">Email Signature Generator</p>
   </div>
 
-  <div class="main">
-    <div style="display: flex; justify-content: space-between;">
-      <div>
-        <form id="sigForm" [formGroup]="form">
-          <div style="display: block;">
-            <label class="inputLabel" for="name">Name: </label>
-            <input formControlName="name" type="text" id="name">
-          </div>
-
-          <div style="display: block;">
-            <label class="inputLabel" for="position">Position: </label>
-            <input formControlName="position" type="text" id="position">
-          </div>
-
-          <div style="display: block;">
-            <label class="inputLabel" for="location">Location/School: </label>
-            <select formControlName="company" id="location">
-              <option>Renfrew County District School Board</option>
-              <option>Admaston Public School</option>
-              <option>A.J. Charbonneau Public School</option>
-              <option>Arnprior District High School</option>
-              <option>Beachburg Public School</option>
-              <option>Central Public School</option>
-              <option>Champlain Discovery Public School</option>
-              <option>Cobden District Public School</option>
-              <option>Eganville and District Public School</option>
-              <option>Fellowes High School</option>
-              <option>Herman Street Public School</option>
-              <option>Highview Public School</option>
-              <option>Killaloe Public School</option>
-              <option>Mackenzie Community School</option>
-              <option>Madawaska Valley District School</option>
-              <option>McNab Public School</option>
-              <option>Opeongo High School</option>
-              <option>Palmer Rapids Public School</option>
-              <option>Pine View Public School</option>
-              <option>Queen Elizabeth Public School</option>
-              <option>Renfrew Collegiate Institute</option>
-              <option>Rockwood Public School</option>
-              <option>Valour JK-12 School</option>
-              <option>Walter Zadow Public School</option>
-              <option>Whitney Public School</option>
-              <option>Continuing Ed</option>
-            </select>
-          </div>
-
-          <div style="display: block;">
-            <div style="display: flex;">
-              <div>
-                <label class="inputLabel" for="phone">Phone Number: </label>
-                <input formControlName="phone" type="text" style="margin-top: 2px" id="phone">
-              </div>
-              <div>
-                <div class="inputLabel">
-                  <label for="extension">Extension? </label>
-                  <input type="checkbox" formControlName="extensionBool" (change)="updateExtensionBox()" id="extension">
+  <div>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+      <mat-tab label="Application">
+        <div style="margin-left: 3%;">
+        <h2 style="margin-top: 0px;">Application</h2>
+          <form id="sigForm" [formGroup]="form">
+            <div style="display: block;">
+              <label class="inputLabel" for="name">Name: </label>
+              <input formControlName="name" type="text" id="name">
+            </div>
+  
+            <div style="display: block;">
+              <label class="inputLabel" for="position">Position: </label>
+              <input formControlName="position" type="text" id="position">
+            </div>
+  
+            <div style="display: block;">
+              <label class="inputLabel" for="location">Location/School: </label>
+              <select formControlName="company" id="location">
+                <option>Renfrew County District School Board</option>
+                <option>Admaston Public School</option>
+                <option>A.J. Charbonneau Public School</option>
+                <option>Arnprior District High School</option>
+                <option>Beachburg Public School</option>
+                <option>Central Public School</option>
+                <option>Champlain Discovery Public School</option>
+                <option>Cobden District Public School</option>
+                <option>Eganville and District Public School</option>
+                <option>Fellowes High School</option>
+                <option>Herman Street Public School</option>
+                <option>Highview Public School</option>
+                <option>Killaloe Public School</option>
+                <option>Mackenzie Community School</option>
+                <option>Madawaska Valley District School</option>
+                <option>McNab Public School</option>
+                <option>Opeongo High School</option>
+                <option>Palmer Rapids Public School</option>
+                <option>Pine View Public School</option>
+                <option>Queen Elizabeth Public School</option>
+                <option>Renfrew Collegiate Institute</option>
+                <option>Rockwood Public School</option>
+                <option>Valour JK-12 School</option>
+                <option>Walter Zadow Public School</option>
+                <option>Whitney Public School</option>
+                <option>Continuing Ed</option>
+              </select>
+            </div>
+  
+            <div style="display: block;">
+              <div style="display: flex;">
+                <div>
+                  <label class="inputLabel" for="phone">Phone Number: </label>
+                  <input formControlName="phone" type="text" style="margin-top: 2px" id="phone">
                 </div>
-                <ng-container *ngIf="ext">
-                  <input formControlName="extension" type="text" aria-label="Extension Textbox"></ng-container>
+                <div>
+                  <div class="inputLabel">
+                    <label for="extension">Extension? </label>
+                    <input type="checkbox" formControlName="extensionBool" (change)="updateExtensionBox()" id="extension">
+                  </div>
+                  <ng-container *ngIf="ext">
+                    <input formControlName="extension" type="text" aria-label="Extension Textbox"></ng-container>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div style="display: block; margin-top: 5px;" *ngIf="this.form.get('company').value">
-            <div style="display: flex;">
-              <div>
-                <label for="rcdsbLogo">Add RCDSB Logo?</label>
-                <input type="checkbox" formControlName="rcdsbLogo" id="rcdsbLogo">
-              </div>
-              <div style="margin-left: 10px"
-                *ngIf="this.form.get('company').value != 'Renfrew County District School Board'">
-                <label for="schoolLogo">Add School Logo?</label>
-                <input type="checkbox" formControlName="schoolLogo" id="schoolLogo">
+  
+            <div style="display: block; margin-top: 5px;" *ngIf="this.form.get('company').value">
+              <div style="display: flex;">
+                <div>
+                  <label for="rcdsbLogo">Add RCDSB Logo?</label>
+                  <input type="checkbox" formControlName="rcdsbLogo" id="rcdsbLogo">
+                </div>
+                <div style="margin-left: 10px"
+                  *ngIf="this.form.get('company').value != 'Renfrew County District School Board'">
+                  <label for="schoolLogo">Add School Logo?</label>
+                  <input type="checkbox" formControlName="schoolLogo" id="schoolLogo">
+                </div>
               </div>
             </div>
+  
+            <div style="display: block;">
+              <input type="submit" (click)="generateSignature()" style="margin-top:5px">
+            </div>
+          </form>
+  
+          <div id="signatureBlock" *ngIf="signature">
+            <p id="signatureText" style="font-size: 10pt; margin-bottom: 0px;">
+              <strong><span style="color: #66a343; font-size: 14pt;">{{uiName}}</span><br>
+                <span style="color: #009bd1;">{{uiPosition}}</span></strong><br>
+              <span>{{uiCompany}}</span><br>
+              <span>{{uiPhone}}</span>
+            </p>
+  
+            <ng-container *ngIf="uiCompany != 'Renfrew County District School Board' && schoolLogoBool">
+              <img style="width: 200px; height: auto; margin-left: 5px;" [src]="schoolLogo" alt="schoolLogoAlt">
+              <br>
+            </ng-container>
+  
+            <ng-container *ngIf="rcdsbLogoBool">
+              <img style="width: 200px; height: auto; margin-left: 5px;"
+                src="https://www.rcdsb.on.ca/en/resources/logo.jpg" alt="RCDSB logo">
+            </ng-container>
           </div>
-
-          <div style="display: block;">
-            <input type="submit" (click)="generateSignature()" style="margin-top:5px">
+  
+          <ng-container *ngIf="signature">
+            <button (click)="copyToClipboard()" style="margin-left: 5px;">Copy Signature Block</button>
+          </ng-container>
           </div>
-        </form>
-
-        <div id="signatureBlock" *ngIf="signature">
-          <p id="signatureText" style="font-size: 10pt; margin-bottom: 0px;">
-            <strong><span style="color: #66a343; font-size: 14pt;">{{uiName}}</span><br>
-              <span style="color: #009bd1;">{{uiPosition}}</span></strong><br>
-            <span>{{uiCompany}}</span><br>
-            <span>{{uiPhone}}</span>
-          </p>
-
-          <ng-container *ngIf="uiCompany != 'Renfrew County District School Board' && schoolLogoBool">
-            <img style="width: 200px; height: auto; margin-left: 5px;" [src]="schoolLogo" alt="schoolLogoAlt">
-            <br>
-          </ng-container>
-
-          <ng-container *ngIf="rcdsbLogoBool">
-            <img style="width: 200px; height: auto; margin-left: 5px;"
-              src="https://www.rcdsb.on.ca/en/resources/logo.jpg" alt="RCDSB logo">
-          </ng-container>
-        </div>
-
-        <ng-container *ngIf="signature">
-          <button (click)="copyToClipboard()" style="margin-left: 5px;">Copy Signature Block</button>
-        </ng-container>
-      </div>
-      <div *ngIf="signature">
+      </mat-tab>
+      <mat-tab label="Instructions">
+        <div style="margin-left: 3%;">
         <h2 style="margin-top: 0px;">Instructions</h2>
         <ol>
           <li>
@@ -131,7 +139,7 @@
           </li>
           <li>
             <p>Give it a name, and paste your signature block in the textbox to the right</p>
-            <img style="width: 80%; border: 2px solid"
+            <img style="border: 2px solid; width: 600px;"
               src="https://icreate8.esolutionsgroup.ca/11140337_RCDSB/en/resources/textbox.PNG" alt="image of textbox">
           </li>
           <li>
@@ -143,6 +151,7 @@
             <p>Click <span style="border: 1px solid; padding: 5px; background-color: #F2F2F2">Save Changes</span> at the bottom of the page</p>
           </li>
         </ol>
-      </div>
-    </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
